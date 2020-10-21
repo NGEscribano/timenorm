@@ -14,9 +14,9 @@ object Scorer {
 
     // Indicate the names for the gold standard, normalization and error files.
     // Input files shoud be in "{expression}\t{type}\t{normalization}\n" format.
-    val goldOutFile = "%s/en-timebank-gold-standard.txt".format(outDir)
-    val normOutFile = "%s/en-timebank-normalizations.txt".format(outDir)
-    val errorFile = "%s/en-timebank-errors.txt".format(outDir)
+    val goldOutFile = "%s/gold-standard.txt".format(outDir)
+    val normOutFile = "%s/normalizations.txt".format(outDir)
+    val errorFile = "%s/errors.txt".format(outDir)
 
     val errorWriter=new PrintWriter(new File(errorFile))
 

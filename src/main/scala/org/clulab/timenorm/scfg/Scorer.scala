@@ -16,7 +16,11 @@ object Scorer {
     // Input files shoud be in "{expression}\t{type}\t{normalization}\n" format.
     val goldOutFile = "%s/es-gold-standard.txt".format(outDir)
     val normOutFile = "%s/es-normalizations0.txt".format(outDir)
+<<<<<<< HEAD
     val errorFile = "%s/es-errors.txt".format(outDir)
+=======
+    val errorFile = "%s/es-errors0.txt".format(outDir)
+>>>>>>> 17e1d10097ff76885bcc29c80ec4e8dc72bcd345
 
     val errorWriter=new PrintWriter(new File(errorFile))
 
@@ -65,7 +69,11 @@ object Scorer {
     // Consider every gold standard file.
     for (file <- new java.io.File(inDir).listFiles) {
       // Keep and write only the expressions and their normalizations.
+<<<<<<< HEAD
       val timexList = Source.fromFile(file).getLines.toList.tail
+=======
+      val timexList = Source.fromFile(file).getLines.toList
+>>>>>>> 17e1d10097ff76885bcc29c80ec4e8dc72bcd345
       for (timex <- timexList) {
         val expression = timex.split("\t").head
         val normalization = timex.split("\t").last
@@ -88,8 +96,13 @@ object Scorer {
     // Consider every file of the directory whose timexes will be normalized.
     for (file <- new java.io.File(inDir).listFiles) {
 
+<<<<<<< HEAD
       // Get the temporal anchor from the first line of the file.
       val dctString = Source.fromFile(file).getLines.toList.head
+=======
+      // Get the temporal anchor from the normalization of the first line.
+      val dctString = Source.fromFile(file).getLines.toList.head.split("\t").last
+>>>>>>> 17e1d10097ff76885bcc29c80ec4e8dc72bcd345
 
       val pattern = "T".r
       val anchor = pattern.findFirstIn(dctString) match {
@@ -119,7 +132,11 @@ object Scorer {
       }
 
       // Get and write the normalizations of all the timexes in the file.
+<<<<<<< HEAD
       val timexList = Source.fromFile(file).getLines.toList.tail
+=======
+      val timexList = Source.fromFile(file).getLines.toList
+>>>>>>> 17e1d10097ff76885bcc29c80ec4e8dc72bcd345
       for (timex <- timexList) {
         // Get and write the expression and its normalization.
         val expression = timex.split("\t").head

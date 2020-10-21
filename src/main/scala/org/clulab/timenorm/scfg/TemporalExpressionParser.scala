@@ -134,7 +134,7 @@ class TemporalExpressionParser(
     val parsesTry =
       try {
         val trees = this.parser.parseAll(tokens)
-        // two unique trees can generate the same TemporalParse, so remove duplicates 
+        // two unique trees can generate the same TemporalParse, so remove duplicates
         Success(trees.map(TemporalParse).toSet)
       } catch {
         case e: UnsupportedOperationException => Failure(e)
@@ -145,7 +145,7 @@ class TemporalExpressionParser(
       case Failure(e) => Failure(e)
 
       case Success(parses) =>
-        // assume that the grammar ambiguity for any expression is at most 2 
+        // assume that the grammar ambiguity for any expression is at most 2
         if (parses.size > 2) {
           val message = "Expected no more than 2 parses for \"%s\", found:\n  %s"
           this.logger.warning(message.format(sourceText, parses.mkString("\n  ")))
@@ -493,4 +493,3 @@ object SpanishTokenizer extends (String => IndexedSeq[String]) {
     }
   }
 }
-
